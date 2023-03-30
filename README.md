@@ -26,5 +26,5 @@ Here users can view the entire inventory of SKUs in a table pagination format an
   <img src="readme_assets/inventory_demand_detail.png" height="auto" width="90%"/>
 </div>
 At the top of this page is a multi-line chart showing the quantity sold, safety stock, reorder quantity and balance stock of that SKU. Users may also toggle which lines to hide/show using the filter buttons at the top right.
-<br>Directly below this chart are two sections that allow the user to update the reorder quantity and safety stock values respectively. Clicking on the ‘Edit’ button brings up an input form that allows them to edit values. Should they wish to revert the values back to the values that our model predicted, they can do so by clicking the refresh icon on the top right of each section.
+<br><br>Directly below this chart are two sections that allow the user to update the reorder quantity and safety stock values respectively. Clicking on the ‘Edit’ button brings up an input form that allows them to edit values. Should they wish to revert the values back to the values that our model predicted, they can do so by clicking the refresh icon on the top right of each section.
 
