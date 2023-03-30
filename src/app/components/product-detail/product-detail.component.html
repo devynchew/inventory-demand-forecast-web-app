@@ -1,0 +1,168 @@
+<!-- Individual page for each SKU showing detailed forecast -->
+<div class="container">
+    <div class="row individual-chart-row">
+        <div class="col-12">
+            <h2 class="inventory-detail-title">Inventory Detail</h2>
+            <div class="sku-chart-section">
+                <div class="flex-wrapper">
+                    <div class="sku-code-container">
+                        <div class="vertical-line"></div>
+                        <p class="sku-code">{{ sku }}</p>
+                    </div>
+
+                    <div class="sku-chart-filter">
+                        <p (click)="toggleChart($event)" id="quantitySold"
+                            [ngClass]="quantitySold === 'active' ? 'filter-active' : ''">Quantity Sold</p>
+                        <p (click)="toggleChart($event)" id="balanceStock"
+                            [ngClass]="balanceStock === 'active' ? 'filter-active' : ''">Balance Stock</p>
+                        <p (click)="toggleChart($event)" id="safetyStock"
+                            [ngClass]="safetyStock === 'active' ? 'filter-active' : ''">Safety Stock</p>
+                        <p (click)="toggleChart($event)" id="reorderQuantity"
+                            [ngClass]="reorderQuantity === 'active' ? 'filter-active' : ''">Reorder Quantity</p>
+                    </div>
+                </div>
+
+                <p class="sku-chart-desc">Quantity sold, balance stock, safety stock and reorder quantity per month.
+                    Values
+                    from Oct 2022 are forecast by our AI model.</p>
+
+                <div class="line">
+                    <!-- Individual SKU chart -->
+                    <svg class="individual-sku"></svg>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row adjustment-row">
+        <div class="col-lg-6 col-12">
+            <div class="adjustment-section">
+                <div class="adjustment-table">
+                    <!-- Reset button for reorder quantity -->
+                    <div class="reset-reorder"><button class="btn" (click)="resetReorder()"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
+                                <path
+                                    d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
+                            </svg></button></div>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Reorder Quantity</th>
+                                <th>User Adjusted Reorder Quantity</th>
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let invoice of reorderQuantityData;">
+                                <td>{{ invoice.date | date: "MMM y" }}</td>
+                                <td>{{ invoice.sum | number : '1.0-0' }}</td>
+                                <td>{{ invoice.adjustedSum | number : '1.0-0' }}</td>
+                                <td>
+                                    <button class="btn edit-btn" data-bs-toggle="modal" (click)="editReorder(invoice)"
+                                        data-bs-target="#reorderQuantityModal"><i class="fa fa-edit"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-12">
+            <div class="adjustment-section">
+                <div class="adjustment-table">
+                    <!-- Reset button for safety stock -->
+                    <div class="reset-reorder"><button class="btn" (click)="resetSafety()"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                        class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
+                        <path
+                            d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
+                    </svg></button></div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Safety Stock</th>
+                                <th>User Adjusted Safety Stock</th>
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let invoice of safetyStockData;">
+                                <td>{{ invoice.date | date: "MMM y" }}</td>
+                                <td>{{ invoice.sum | number : '1.0-0' }}</td>
+                                <td>{{ invoice.adjustedSum | number : '1.0-0' }}</td>
+                                <td>
+                                    <button class="btn edit-btn" data-bs-toggle="modal" (click)="editSafety(invoice)"
+                                        data-bs-target="#safetyStockModal"><i class="fa fa-edit"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="reorderQuantityModal" tabindex="-1" aria-labelledby="reorderQuantityModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Reorder Quantity</h5>
+                <span data-bs-dismiss="modal" aria-label="class" class="close-btn1"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+                    </svg></span>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-box">
+                    <form [formGroup]="reorderQuantityForm" (ngSubmit)="updateReorder(reorderQuantityForm)">
+
+                        <div class="form-group">
+                            <label>Reorder Quantity</label>
+                            <input type="text" formControlName="reorderQuantity" class="form-control mt-3 mb-3" />
+                        </div>
+                        <button type="submit" class="btn submit-btn" data-bs-dismiss="modal">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="safetyStockModal" tabindex="-1" aria-labelledby="safetyStockModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Safety Stock</h5>
+                <span data-bs-dismiss="modal" aria-label="class" class="close-btn1"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+                    </svg></span>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-box">
+                    <form [formGroup]="safetyStockForm" (ngSubmit)="updateSafety(safetyStockForm)">
+
+                        <div class="form-group">
+                            <label>Safety Stock</label>
+                            <input type="text" formControlName="safetyStock" class="form-control mt-3 mb-3" />
+                        </div>
+                        <button type="submit" class="btn submit-btn" data-bs-dismiss="modal">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

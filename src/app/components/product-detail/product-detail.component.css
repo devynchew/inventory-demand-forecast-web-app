@@ -1,0 +1,148 @@
+/* Flexbox for SKU code and filter buttons */
+.sku-chart-section .flex-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-wrapper > p.sku-code {
+    padding: 25px 0px 0px 25px;
+}
+
+/* Chart row section */
+.individual-chart-row {
+    margin: 32px 0px 0px 0px;
+}
+
+.inventory-detail-title {
+    font-size: 24px;
+    font-weight: 500;
+    padding-bottom: 15px;
+}
+
+/* SKU individual chart section */
+.sku-chart-section {
+    background-color: white;
+    padding: 25px 55px 20px 35px;
+    height: 700px;
+    border-radius: 20px;
+}
+
+/* SKU code */
+.sku-code-container {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 25px;
+}
+
+.sku-code-container .vertical-line {
+    border-left: 6px solid var(--green);
+    margin: 20px 0 20px 25px;
+}
+
+.sku-code-container .sku-code {
+    font-size: 22px;
+    padding: 20px 0;
+    margin: 0;
+}
+
+.sku-chart-desc {
+    padding-left: 25px;
+}
+
+/* sku individual chart filter */
+.sku-chart-filter {
+    display: flex;
+    padding: 25px 0 0 0;
+    font-size: 14px;
+}
+
+.sku-chart-filter p.filter-active{
+    color: white;
+    padding: 5px 12px 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 7px;
+    transition: all 0.1s ease-out;
+    justify-content: center;
+    background-color: var(--navbar-bg);
+}
+
+.sku-chart-filter p.filter-active:hover{
+    cursor: pointer;
+}
+
+.sku-chart-filter p {
+    color: #495057;
+    padding: 5px 12px 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 7px;
+    transition: all 0.1s ease-out;
+    justify-content: center;
+}
+
+.sku-chart-filter p:hover {
+    cursor: pointer;
+}
+
+.adjustment-row {
+    margin: 30px 0px 0px 0px;
+}
+
+/* Reorder Quantity section */
+.adjustment-section {
+    background-color: white;
+    padding: 0px;
+    border-radius: 20px;
+}
+
+.adjustment-table {
+    padding: 20px 35px 25px;
+    margin-bottom: 25px;
+}
+
+.adjustment-table th {
+    font-weight: 500;
+}
+
+.adjustment-table tbody tr td {
+    vertical-align: middle;
+}
+
+/* Reorder reset button */
+.adjustment-table .reset-reorder {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.adjustment-table .reset-reorder button {
+    color: var(--navbar-bg);
+    padding: 0;
+}
+
+.adjustment-table .reset-reorder button:hover {
+    opacity: 0.75;
+}
+
+/* Modal close icon */
+.close-btn1 {
+    cursor: pointer;
+}
+
+/* Submit & Edit Buttons */
+.submit-btn, .edit-btn {
+    color: white;
+    background-color: var(--navbar-bg);
+    border-color: var(--navbar-bg);
+}
+
+.submit-btn:hover, .edit-btn:hover {
+    opacity: 0.85;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+}

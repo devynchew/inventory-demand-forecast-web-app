@@ -1,0 +1,53 @@
+<!-- Product list page showing every single SKU in a paginated table. User can click into each SKU or search a specific one -->
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="skulist-section">
+        <div class="flex-wrapper">
+          <h2 class="skulist-title">Inventory List</h2>
+          <div class="wrapper">
+            <div [ngClass]="searchToggle === 'active' ? 'active' : ''" class="search-input">
+              <input type="text" placeholder="Type to search.." (keyup)="searchValue($event)">
+              <div class="autocom-box">
+                <!-- here list is inserted using javascript -->
+                <li *ngFor="let itemCode of filteredItemCodes" value="itemCode"
+                  [routerLink]="['/product-details', itemCode]"><a>{{ itemCode
+                    }}</a></li>
+              </div>
+              <div class="icon"><i class="fas fa-search"></i></div>
+            </div>
+          </div>
+
+        </div>
+        <div class="sku-table">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Item Code</th>
+                <th>Application</th>
+                <th>Item Sub Group</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Pagination buttons for the table using ngx pagination -->
+              <tr [routerLink]="['/product-details', sku.sku]" *ngFor="let sku of skuList | paginate :{id:'listing_pagination',
+              itemsPerPage:10,
+              currentPage:page,
+              totalItems:totalRecords }">
+                <td>{{sku.sku}}</td>
+                <td>{{sku.application}}</td>
+                <td>{{sku.itemGroupDefault}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div>
+            <pagination-controls id="listing_pagination" maxSize:any="5" directionLinks:any="true"
+              (pageChange)="page=$event">
+            </pagination-controls>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

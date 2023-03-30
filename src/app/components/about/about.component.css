@@ -1,0 +1,137 @@
+/* About Section */
+.about-row {
+    padding: 40px 20px 80px 20px;
+}
+
+.svg-container {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.about-row h1 {
+    font-size: clamp(35px, 3.5vw, 45px);
+    max-width: 500px;
+    padding-top: 15px;
+}
+
+.about-row p {
+    padding-top: 20px;
+    max-width: 500px;
+    font-size: clamp(14px, 2vw, 18px);
+}
+
+.read-more-btn {
+    color: white;
+    background-color: var(--navbar-bg);
+    border-color: var(--navbar-bg);
+    margin-top: 15px;
+    padding: 0.375rem 1.25rem;
+}
+
+.read-more-btn:hover {
+    background-color: var(--green);
+    border-color: var(--green);
+}
+
+@media (min-width: 992px) {
+    .about-row {
+        flex-wrap: nowrap;
+        padding: 60px 90px 80px 90px;
+    }
+    .about-row p {
+        max-width: 650px;
+    }
+    .about-row h1 {
+        max-width: 650px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .about-row h1 {
+        padding-top: 40px;
+    }
+
+    .about-row {
+        padding: 80px 90px 100px 90px;
+    }
+}
+
+
+
+/* Feature 1 section */
+.feature-row {
+    padding: 0 20px 50px 20px;
+}
+
+img.feature-image {
+    max-width: 100%;
+    height: auto;
+}
+
+h2 {
+    font-size: clamp(25px, 3vw, 30px);
+}
+
+h3 {
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding-left: 32px;
+    padding-bottom: 15px;
+    color: var(--green);
+}
+
+.feature-heading-container {
+    display: flex;
+    gap: 25px;
+}
+
+.vertical-line {
+    border-left: 6px solid var(--green);
+    margin: 6px 0;
+}
+
+.feature-heading {
+    margin: 0;
+    max-width: 300px;
+}
+
+.feature-container p {
+    padding-top: 25px;
+    max-width: 500px;
+}
+
+@media (min-width: 992px) {
+    .feature-row {
+        gap: 30px;
+        flex-wrap: nowrap;
+        margin-bottom: 100px;
+    }
+    .feature-heading {
+        max-width: 450px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .feature-row {
+        gap: 100px;
+    }
+}
+
+/* Feature 2 section */
+.feature-row2 {
+    padding: 0 20px 50px 20px;
+}
+
+@media (min-width: 992px) {
+    .feature-row2 {
+        gap: 30px;
+        flex-wrap: nowrap;
+        margin-bottom: 100px;
+    }
+}
+
+/* Feature 3 section */
+.feature-row3 {
+    padding: 0 20px 50px 20px;
+}

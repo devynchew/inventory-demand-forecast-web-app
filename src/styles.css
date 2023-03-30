@@ -1,0 +1,171 @@
+/* Global CSS styles for the project. We needed this mainly to style the d3.js chart as it could not be styled from the components.css file */
+
+:root {
+    --navbar-bg: #405189;
+    --navbar-hover: #E3E8F4;
+    --navbar-hover-font: #24335A;
+    --body-bg: #eee;
+    --font-grey: #9b9b9b;
+    --data-line: #1C7CFF;
+    --prediction-line: #f1536e;
+    --yellow: #edae49;
+    --light-blue: #abb9e8;
+    --green: #49a078;
+}
+
+/* Remove caret */
+html {
+    cursor: default;
+    caret-color: transparent;
+}
+
+::selection {
+    color: #fff;
+    background: var(--navbar-bg);
+}
+
+/* Font */
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    background-color: var(--body-bg);
+}
+
+/* Container */
+@media (min-width: 1750px) {
+    .container {
+        max-width: 1600px;
+    }
+}
+
+/* Navigation Menu */
+.navbar {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    background-color: var(--navbar-bg);
+    font-size: 16px;
+    box-shadow: 0 19px 34px -15px #d2d2f2;
+}
+
+.navbar .navbar-nav .nav-link {
+    color: #FFF;
+    transition: all 0.1s ease-out;
+
+}
+
+.navbar .navbar-nav .nav-link:hover {
+    color: var(--navbar-hover-font);
+}
+
+@media (min-width: 992px) {
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+}
+
+.navbar ul li {
+    border-radius: 10px;
+    transition: all 0.1s ease-out;
+}
+
+.navbar ul li:hover {
+    background-color: var(--navbar-hover);
+
+}
+
+
+/* Individual SKU Chart */
+svg.individual-sku {
+    height: 500px;
+    width: 100%;
+}
+
+/* Axis styling */
+.y-axis g line {
+    stroke-dasharray: 3;
+    opacity: 0.25;
+}
+
+.y-axis path {
+    display: none;
+}
+
+.y-axis g text {
+    font-size: 14px;
+}
+
+.x-axis g text {
+    font-size: 14px;
+}
+
+.x-axis path {
+    display: none;
+}
+
+/* Legend */
+
+.legend {
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+/* Search autocomplete box */
+.autocom-box li {
+    list-style: none;
+    padding: 6px 12px;
+    display: none;
+    width: 100%;
+    cursor: default;
+    border-radius: 3px;
+}
+
+.search-input.active .autocom-box li {
+    display: block;
+}
+
+.autocom-box li:hover {
+    background: var(--navbar-bg);
+    color: white;
+}
+
+/* SKU Table */
+.sku-table {
+    border-width: 0.5px;
+    border-style: solid;
+    border-color: #dee2e6;
+    margin: 0 28px 0 28px;
+    table-layout: fixed;
+}
+
+.sku-table th {
+    padding: 12px 0 12px 0;
+    font-weight: 500;
+}
+
+.sku-table th, .sku-table td {
+    padding-left: 25px;
+}
+
+.sku-table td {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 33.33%;
+}
+
+ul.ngx-pagination {
+    padding: 15px 0 15px 25px;
+}
+
+.ngx-pagination li.current {
+    background: var(--navbar-bg);
+}
+
+.sku-table tbody tr:hover {
+    background-color: rgba(64,153,255,.1);
+}
+
+/* Get rid of bootstrap btn focus box shadow */
+.btn:focus {
+    box-shadow: none;
+}
