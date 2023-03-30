@@ -14,12 +14,14 @@ This web app was built using Angular 14.2.6, D3.js, .NET Core Web Api with .NET 
 ## User Guide
 
 The web app contains 2 buttons on the navigation menu, Product-List and About. Its main function is to allow the user to view the quantity sold, reorder quantity, safety stock and balance stock of each SKU for both past and forecast dates. It also allows the user to make adjustments to the reorder quantity and safety stock values predicted by our model if needed.
+<br>
 
 ### Product list page
 <div>
   <img src="readme_assets/inventory_demand_list.png" height="auto" width="90%"/>
 </div>
 Here users can view the entire inventory of SKUs in a table pagination format and click on any table row to be redirected to the detail page for that particular SKU. They can also use the search bar at the top right to search for specific SKUs, and clicking on the search result will direct them to the detail page as well.
+<br>
 
 ### Product detail page
 <div>
